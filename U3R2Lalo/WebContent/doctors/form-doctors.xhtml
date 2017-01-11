@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.doctorFormTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.doctorFormHeader}</h2>
+			<p:fieldset legend="#{str.doctorLegendForm}">
+				<h:form>
+					<h:panelGrid columns="1">
+						<p:inputText placeholder="#{str.doctorFirstNamePrompt}"
+							value="#{doctorBean.doctor.fName}"></p:inputText>
+
+						<p:inputText placeholder="#{str.doctorLastNamePrompt}"
+							value="#{doctorBean.doctor.lName}"></p:inputText>
+						<p:inputText placeholder="#{str.doctorPhonePrompt}"
+							value="#{doctorBean.doctor.phone}"></p:inputText>
+						<p:inputText placeholder="#{str.doctorAgePrompt}"
+							value="#{doctorBean.doctor.age}"></p:inputText>
+
+					</h:panelGrid>
+					<p:commandButton value="#{str.buttonSave}"
+						action="#{doctorBean.guardar()}"></p:commandButton>
+					<p:commandButton value="#{str.buttonDelete}"
+						action="#{doctorBean.eliminar()}"></p:commandButton>
+					<p:commandButton value="#{str.buttonCancel}"
+						action="#{doctorBean.cancelar()}"></p:commandButton>
+				</h:form>
+			</p:fieldset>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

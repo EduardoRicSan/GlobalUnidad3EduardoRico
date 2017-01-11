@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.patientFormTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.patientFormHeader}</h2>
+			<p:fieldset legend="#{str.patientLegendForm}">
+				<h:form>
+					<h:panelGrid columns="5">
+					
+						<p:inputText placeholder="#{str.patientFirstNamePrompt}"
+							value="#{patientBean.patient.fName}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						<p:inputText placeholder="#{str.patientLastNamePrompt}"
+							value="#{patientBean.patient.lName}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+							<p:inputText placeholder="#{str.patientStreetPrompt}"
+							value="#{patientBean.patient.street}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						<p:inputText placeholder="#{str.patientCityPrompt}"
+							value="#{patientBean.patient.city}" 
+							style="padding-top:0px; height:24px" ></p:inputText>}
+							
+							
+							<p:inputText placeholder="#{str.patientStatePrompt}"
+							value="#{patientBean.patient.state}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+						
+						<p:inputText placeholder="#{str.patientPhonePrompt}"
+							value="#{patientBean.patient.phone}" 
+							style="padding-top:0px; height:24px" ></p:inputText>
+							
+							
+						<p:selectOneMenu value="#{patientBean.patient.doctor.id}" style="height:29px">
+							<f:selectItems value="#{patientBean.doctors}" var="p"
+								itemLabel="#{p.lName}" itemValue="#{p.id}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						</h:panelGrid>
+						<p:commandButton value="#{str.buttonSave}"
+							action="#{patientBean.guardar()}"></p:commandButton>
+						<p:commandButton value="#{str.buttonDelete}"
+							action="#{patientBean.eliminar()}"></p:commandButton>
+						<p:commandButton value="#{str.buttonCancel}"
+							action="#{patientBean.cancelar()}"></p:commandButton>
+					
+				</h:form>
+			</p:fieldset>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

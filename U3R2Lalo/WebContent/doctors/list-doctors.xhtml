@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>#{str.doctorListTitle}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="contenido">
+			<h2>#{str.doctorListTitle}</h2>
+			<h:form>
+				<p:commandButton value="#{str.buttonAdd}"
+					action="#{doctorBean.agregar()}"></p:commandButton>
+			</h:form>
+			<p:dataTable value="#{doctorBean.doctors}" var="d">
+				<p:column headerText="#{str.action}">
+				<h:form>
+					<h:commandButton value="#{str.buttonEdit}"
+						action="#{doctorBean.editar(d)}"></h:commandButton>
+					</h:form>
+				</p:column>
+				
+				<p:column headerText="#{str.doctorFirstNameHeader}">
+					<p:outputLabel value="#{d.fName}"></p:outputLabel>
+				</p:column>
+
+				
+				<p:column headerText="#{str.doctorLastNameHeader}">
+					<p:outputLabel value="#{d.lName}"></p:outputLabel>
+				</p:column>
+				
+				<p:column headerText="#{str.doctorPhoneHeader}">
+					<p:outputLabel value="#{d.phone}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="#{str.doctorAgeHeader}">
+					<p:outputLabel value="#{d.age}"></p:outputLabel>
+				</p:column>
+				
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
